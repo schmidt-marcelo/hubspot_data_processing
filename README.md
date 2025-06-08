@@ -12,7 +12,7 @@ The solution implementation, on the other hand, consumes company, contact and me
 5) Domain is saved only once at the end of the whole process;
 6) Remove the load of the server.js since it's not used;
 7) Make use of paralelization provided by ```async``` library;
-8) Removed apikey and hubId from logging entries once it's a security breach;
+8) Removed ```apikey``` and ```hubId``` from logging entries once it's a security breach;
 9) Make use of local caching of contacts data to avoid unnecessary calls to hubspot api;
 
 ### Before
@@ -49,4 +49,3 @@ connected to database
 1749412976521: drain queue
 1749412976521: finish processing account. 459 actions stored: 9 contacts, 417 companies, 33 meetings.
 1749412976521: finish processing pulling data from HubSpot in 0:04 minutes
-```
