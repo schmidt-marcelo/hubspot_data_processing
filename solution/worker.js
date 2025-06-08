@@ -389,7 +389,7 @@ const processMeetings = async (account) => {
   return actions;
 };
 
-const createQueue = (domain, actions) => queue(async (action, callback) => {
+const createQueue = (actions) => queue(async (action, callback) => {
   actions.push(action);
 
   if (actions.length > 2000) {

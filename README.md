@@ -3,7 +3,13 @@
 This is a sample app to exercise the use of nodejs Hubspot api client. I've used what's in the original folder as a base and perform some optimizations on the solution folder. The original implementation consumes company and contact data, and takes more than 10min to finish. 
 The solution implementation, on the other hand, consumes company, contact and meetings data and takes 3 to 4 seconds to finish. 
 
-## Optimizations:
+## Architecture optimizations:
+
+1) Isolate the calls to hubspot api using decorators so that the code doesn't depend directly on the client api, and workers don't need to worry about refreshing tokens and pagination for instance;
+2) Implement Open-Closed Principle, having each process in a separated worker, so that new workers can be implemented and make use of the same advantages;
+3) Separate the persistence of the domain in another file
+
+## Performance optimizations:
 
 1) Remove all the retry mechanism and use the native configuration of hubspot client api;
 2) Paralelize the data gathering processes using ```Promise.all```;
@@ -14,6 +20,12 @@ The solution implementation, on the other hand, consumes company, contact and me
 7) Make use of paralelization provided by ```async``` library;
 8) Removed ```apikey``` and ```hubId``` from logging entries once it's a security breach;
 9) Make use of local caching of contacts data to avoid unnecessary calls to hubspot api;
+
+## Code quality and readability
+
+Most of the above optimizations already adresses the code readability, in my opinion. About code quality, I would implement tests: unit tests (+ mutation), integration tests and e2e tests.
+
+## Execution
 
 ### Before
 
